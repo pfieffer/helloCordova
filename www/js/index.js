@@ -27,20 +27,40 @@ var app = {
     // Bind any cordova events here. Common events are:
     // 'pause', 'resume', etc.
     onDeviceReady: function() {
-        this.receivedEvent('deviceready');
+        //this.receivedEvent('deviceready');
+
+        //hide the output cards at first
+        document.getElementById('output').style.visibility = 'hidden';
+        		document.getElementById('lbsInput').addEventListener('input', function(e){
+        			//show the output cards
+        			document.getElementById('output').style.visibility = 'visible';
+        			//define input value
+        			let lbs= e.target.value;
+        			//conversion going down here
+        			document.getElementById('gramsOutput').innerHTML = lbs/0.0022046;
+        			document.getElementById('kgOutput').innerHTML = lbs/2.2046;
+        			document.getElementById('ozOutput').innerHTML = lbs*16;
+
+        			document.getElementById('tolaOutput').innerHTML = lbs*38.88889;
+        			document.getElementById('usquintalOutput').innerHTML = lbs*0.01;
+        		});
     },
 
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
-
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
-
-        console.log('Received Event: ' + id);
+//        var parentElement = document.getElementById(id);
+//        var listeningElement = parentElement.querySelector('.listening');
+//        var receivedElement = parentElement.querySelector('.received');
+//
+//        listeningElement.setAttribute('style', 'display:none;');
+//        receivedElement.setAttribute('style', 'display:block;');
+//
+//        console.log('Received Event: ' + id);
     }
+
+
 };
 
 app.initialize();
+
+
